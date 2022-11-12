@@ -110,25 +110,5 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
 
-Future apicall(city) async {
-  final url = Uri.parse(
-      "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=8875a46932e3e98fc148dabdac8af3ff");
-  final response = await http.get(url);
-  print(response.body);
-  final json = jsonDecode(response.body);
-  print(json["weather"][0]["main"]);
-
-  final output = {
-    'description': json["weather"][0]['description'],
-    'temp': json["main"]['temp'] - 273,
-    'feelslike': json["main"]['feels_like'] - 273,
-    'min': json["main"]['temp_min'] - 273,
-    'max': (json["main"]['temp_max'] - 273),
-    'pressure': json["main"]['pressure'],
-    'humidity': json["main"]['humidity']
-
-  };
-  return output;
-}
 
 
